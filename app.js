@@ -1,9 +1,5 @@
-function isRequired() {
-    throw new Error();
-}
+const array1 = [14, 'string', 8];
 
-function name(name = isRequired()) {
-    console.log(name);
-}
+const isLargeNumber = element => element === 'string';
 
-name();
+console.log(array1.findIndex(isLargeNumber));
