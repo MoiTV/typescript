@@ -1,14 +1,7 @@
-function sumAll(arr) {
-    let max = Math.max(arr[0], arr[1]);
-    let min = Math.min(arr[0], arr[1]);
-
-    let total = 0;
-
-    for (let i = min; i <= max; i++) {
-        total += i;
-    }
-
-    return total;
+function diffArray(arr1, arr2) {
+    let newArr = [...arr1, ...arr2];
+    return newArr.filter(item => !arr1.includes(item) || !arr2.includes(item));
 }
 
-console.log(sumAll([1, 4]));
+// should only return [4]
+console.log(diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]));
