@@ -1,7 +1,27 @@
-function diffArray(arr1, arr2) {
-    let newArr = [...arr1, ...arr2];
-    return newArr.filter(item => !arr1.includes(item) || !arr2.includes(item));
+function whatIsInAName(collection, source) {
+    // "What's in a name? that which we call a rose
+    // By any other name would smell as sweet.”
+    // -- by William Shakespeare, Romeo and Juliet
+    var srcKeys = Object.keys(source);
+
+    return collection.filter(function(obj) {
+        for (var i = 0; i < srcKeys.length; i++) {
+            if (!obj.hasOwnProperty(srcKeys[i]) ||
+                obj[srcKeys[i]] !== source[srcKeys[i]]
+            ) {
+                return false;
+            }
+        }
+        return true;
+    });
 }
 
-// should only return [4]
-console.log(diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]));
+console.log(
+    whatIsInAName(
+        [
+            { first: 'Romeo', last: 'Montague' },
+            { first: 'Mercutio', last: null },
+            { first: 'Tybalt', last: 'Capulet' }
+        ], { first: 'Capulet', last: 'moises' }
+    )
+);
