@@ -1,39 +1,18 @@
-//Google Question
-//Given an array = [2,5,1,2,3,5,1,2,4]:
-//It should return 2
+function myReplace(str, before, after) {
+    // Find index where before is on string
+    var index = str.indexOf(before);
 
-//Given an array = [2,1,1,2,3,5,1,2,4]:
-//It should return 1
-
-//Given an array = [2,3,4,5]:
-//It should return undefined
-
-function firstRecurringCharacter(input) {
-    for (let i = 0; i < input.length; i++) {
-        for (let j = i + 1; j < input.length; j++) {
-            if (input[i] === input[j]) {
-                return input[i];
-            }
-        }
+    // Check to see if the first letter is uppercase or not
+    if (str[index] === str[index].toUpperCase()) {
+        // Change the after word to be capitalized before we use it.
+        after = after.charAt(0).toUpperCase() + after.slice(1);
     }
-    return undefined;
+    // Now replace the original str with the edited one.
+    str = str.replace(before, after);
+
+    return str;
 }
 
-function firstRecurringCharacter2(input) {
-    let map = {};
-    for (let i = 0; i < input.length; i++) {
-        if (map[input[i]] !== undefined) {
-            return input[i];
-        } else {
-            console.log(map[i], map[input[i]]);
-            map[input[i]] = i;
-        }
-    }
-    return undefined;
-}
+// test here
 
-console.log(firstRecurringCharacter2([1, 2, 3, 4, 5, 6, 1]));
-
-//Bonus... What if we had this:
-// [2,5,5,2,3,5,1,2,4]
-// return 5 because the pairs are before 2,2
+myReplace('A quick brown fox Jumped over the lazy dog', 'jumped', 'leaped');
