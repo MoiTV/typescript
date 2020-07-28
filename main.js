@@ -1,18 +1,31 @@
-function myReplace(str, before, after) {
-    // Find index where before is on string
-    var index = str.indexOf(before);
+function pairElement(str) {
+    // Return each strand as an array of two elements, the original and the pair.
+    var paired = [];
 
-    // Check to see if the first letter is uppercase or not
-    if (str[index] === str[index].toUpperCase()) {
-        // Change the after word to be capitalized before we use it.
-        after = after.charAt(0).toUpperCase() + after.slice(1);
+    // Function to check with strand to pair.
+    var search = function(char) {
+        switch (char) {
+            case 'A':
+                paired.push(['A', 'T']);
+                break;
+            case 'T':
+                paired.push(['T', 'A']);
+                break;
+            case 'C':
+                paired.push(['C', 'G']);
+                break;
+            case 'G':
+                paired.push(['G', 'C']);
+                break;
+        }
+    };
+
+    // Loops through the input and pair.
+    for (var i = 0; i < str.length; i++) {
+        search(str[i]);
     }
-    // Now replace the original str with the edited one.
-    str = str.replace(before, after);
 
-    return str;
+    return paired;
 }
 
-// test here
-
-myReplace('A quick brown fox Jumped over the lazy dog', 'jumped', 'leaped');
+pairElement('GCG');
