@@ -1,31 +1,23 @@
-function pairElement(str) {
-    // Return each strand as an array of two elements, the original and the pair.
-    var paired = [];
+const log = console.log;
 
-    // Function to check with strand to pair.
-    var search = function(char) {
-        switch (char) {
-            case 'A':
-                paired.push(['A', 'T']);
-                break;
-            case 'T':
-                paired.push(['T', 'A']);
-                break;
-            case 'C':
-                paired.push(['C', 'G']);
-                break;
-            case 'G':
-                paired.push(['G', 'C']);
-                break;
+function uniteUnique(arr) {
+    let finalArray = [];
+
+    for (let i = 0; i < arguments.length; i++) {
+        let arrayArguments = arguments[i];
+        log(arrayArguments);
+        // Loops through the array at hand
+        for (let j = 0; j < arrayArguments.length; j++) {
+            let indexValue = arrayArguments[j];
+
+            // Checks if the value is already on the final array
+            if (finalArray.indexOf(indexValue) < 0) {
+                finalArray.push(indexValue);
+            }
         }
-    };
-
-    // Loops through the input and pair.
-    for (var i = 0; i < str.length; i++) {
-        search(str[i]);
     }
 
-    return paired;
+    log(finalArray);
 }
 
-pairElement('GCG');
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
