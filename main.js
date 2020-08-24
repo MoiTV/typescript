@@ -10,4 +10,4 @@ function reverseString(str) {
     return temp;
 }
 
-console.log(reverseString(name));
+reverseString('moises');
